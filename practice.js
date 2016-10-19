@@ -163,14 +163,19 @@ var user1 = {
 }
 /*Above you're given a user object. Loop through the user object checking to make sure
 that each value is truthy. If it's not truthy, remove it from the object. */
-
+for (var key in user1) {
+	if (!user1[key]) {
+		delete user1[key];
+	}
+}
   //Code Here
 
 //Once you get your truthy Object, Change the remaining values in the object to be specific
 // to you (name: 'your name', username: 'your username'), rather than my information.
 
   //Code Here
-
+user1.name = "Gustav";
+user1.username = 'Gucci';
 
 
 
@@ -192,7 +197,8 @@ var user2 = {
 };
 //Let's say I, the user, decided to change my name and email address to the following
 // name -> 'Tyler S. McGinnis', email -> 'tyler.mcginnis@devmounta.in'. Make that change.
-
+user2.name = "Tyler S. McGinnis";
+user2.email = "tyler.mcginnis@devmounta.in";
   //Code Here
 
 //Now call the sayName method that's on the user object which will alert the users email
@@ -214,15 +220,14 @@ var methodCollection = {};
 /*Now add two methods (functions that are properties on objects) to your methodCollection
 object. One called 'alertHello' which alerts 'hello' and another method called logHello
  which logs 'hello' to the console. */
-function alertHello() {
- 	alert("hello");
-}
-methodCollection.alertHello();
 
-function logHello() {
-	console.log("hello");
+methodCollection.alertHello = function() {
+	alert("hello");
 }
-methodCollection.logHello();
+
+methodCollection.logHello = function() {
+	console.log("hello");
+};
   //Code Here
 
 //Now call your alertHello and logHello methods.
@@ -238,12 +243,12 @@ methodCollection.logHello();
 // Create a function called makePerson which takes in name, birthday, ssn as its
 // parameters and returns a new object with all of the information that you passed in.
 function makePerson(name, birthday, ssn) {
-	var newObj = {
+	var newPerson = {
 		name: name,
 		birthday: birthday,
 		ssn: ssn
 	};
-	return newObj;
+	return newPerson;
 }
   //Code Here
 
@@ -278,3 +283,13 @@ function makeCard(cardNumber, expirationDate, securityCode) {
 */
 
   //Code Here
+  function bindCard(newPerson, creditCard) {
+    var newObj = {};
+    for (var key in newPerson) {
+        newObj[key] = newPerson[key];
+    }
+    for (var key in creditCard) {
+      newObj[key] = creditCard[key];
+    }
+    return newObj;
+  }
